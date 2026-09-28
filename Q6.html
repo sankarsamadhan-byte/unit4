@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+
+<label>Enter the  nuembr </label>
+<input type="number" id="num" name="num" onkeyup="check()">
+<br>
+<div id="msg"></div>
+<script>
+
+function check()
+{
+
+    let name=document.getElementById("num").value;
+    let sam =new XMLHttpRequest();
+    sam.open("GET","Q6.php?name="+name,true);
+    sam.send();
+    sam.onreadystatechange=function()
+    {
+        if(this.readyState==4&&this.status==200)
+    {
+
+            document.getElementById("msg").innerHTML=this.responseText;
+    }
+    }
+}
+
+
+
+</script>
+    </form>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!-- Create a form containing a radiobutton with some product 
+names. Whenever a user selects a particular product from the 
+radiobutton, Display on the page as “You have selected ________ 
+product”. Implement using AJAX. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Selection</title>
+</head>
+
+<body>
+
+<h3>Select a Product</h3>
+
+<form>
+    <input type="radio" name="product" value="Laptop"
+           onclick="show(this.value)"> Laptop<br>
+
+    <input type="radio" name="product" value="Mobile"
+           onclick="show(this.value)"> Mobile<br>
+
+    <input type="radio" name="product" value="Tablet"
+           onclick="show(this.value)"> Tablet<br>
+
+    <input type="radio" name="product" value="Camera"
+           onclick="show(this.value)"> Camera<br>
+</form>
+
+<h3>Output:</h3>
+
+<div id="sam"></div>
+
+<script>
+
+function show(value)
+{
+    let sam = new XMLHttpRequest();
+
+    sam.open("GET", "Q5.php?sam=" + value, true);
+
+    sam.send();
+
+    sam.onreadystatechange = function()
+    {
+        if(sam.readyState == 4 && sam.status == 200)
+        {
+            document.getElementById("sam").innerHTML = sam.responseText;
+        }
+    }
+}
+
+</script>
+
+</body>
+</html>

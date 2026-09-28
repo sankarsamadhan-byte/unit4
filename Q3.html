@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+<h2>Select Product</h2>
+
+<select onchange="show(this.value)">
+    <option value="">SELECT</option>
+    <option value="Laptop">Laptop</option>
+    <option value="Keyboard">Keyboard</option>
+    <option value="Mouse">Mouse</option>
+    <option value="Headphone">Headphone</option>
+</select>
+
+<div id="ans"></div>
+
+<script>
+
+function show(value)
+{
+    let sam = new XMLHttpRequest();
+
+    sam.open("GET", "Q11.php?name=" + value, true);
+
+    sam.send();
+
+    sam.onreadystatechange = function()
+    {
+        if(sam.readyState == 4 && sam.status == 200)
+        {
+            document.getElementById("ans").innerHTML = sam.responseText;
+        }
+    }
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="POST">
+        <label>Enter the label</label>
+        <input type="text" name="email" id="email"
+        onkeyup="show()">
+    </form>
+    <div id="msg"></div>
+    <script>
+            function show()
+            {
+
+                    let emi=document.getElementById("email").value;
+                    let mes=document.getElementById("msg");
+
+                    let ans=/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,8}$/;
+
+                    if(ans.test(emi))
+                    {
+                        mes.style.color="green";
+                        mes.innerHTML="valid EMil fomat";
+                    }
+                    else
+                    {
+                        mes.style.color="red";
+                        mes.innerHTML="INCAILS";
+                    }
+
+            }
+
+
+
+    </script>
+    
+</body>
+</html>

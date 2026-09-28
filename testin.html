@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+
+        <input type="radio"  name="pro" value="laprop"
+        onclick="show(this.value)">Laptop<br>
+
+        <input type="radio" name="pro" value="Mobile"
+        onclick="show(this.value)">Mobile<br>
+
+
+        <input type="radio" name="pro" value="Tablet"
+        onclick="show(this.value)">TBALAET<br>
+
+        <input type="radio" name="pro" value="PEN"
+        onclick="show(this.value)">PENDRRI<br>
+</form>
+
+<div id="msg"></div>
+<script>
+
+function show(value)
+{
+         let sam=new XMLHttpRequest();
+         sam.open("GET","Q5.php?name="+value,true);
+         sam.send();
+         sam.onreadystatechange=function()
+         {
+            if(sam.readyState==4&&sam.status==200)
+         {
+            document.getElementById("msg").innerHTML=sam.responseText;
+         }
+         }
+}
+
+</script>
+</body>
+</html>

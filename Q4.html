@@ -1,0 +1,55 @@
+<!-- 
+4. Create a form containing a combobox with  some color names 
+as items. Whenever a user selects a particular color from the 
+combobox, that selected item should be printed on the page. 
+(i.e. without pressing submit button). Implement using AJAX. -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Selector</title>
+</head>
+
+<body>
+
+<h3>Select a Color</h3>
+
+<select onchange="show(this.value)">
+    <option value="">SELECT</option>
+    <option value="red">Red</option>
+    <option value="green">Green</option>
+    <option value="blue">Blue</option>
+    <option value="orange">Orange</option>
+    <option value="purple">Purple</option>
+</select>
+
+<h3>Selected Color:</h3>
+
+<div id="msg"></div>
+
+<script>
+
+function show(value)
+{
+    let sam = new XMLHttpRequest();
+
+    sam.open("GET", "Q4.php?name=" + value, true);
+
+    sam.send();
+
+    sam.onreadystatechange = function()
+    {
+        if(sam.readyState == 4 && sam.status == 200)
+        {
+            document.getElementById("msg").innerHTML = sam.responseText;
+        }
+    }
+}
+
+</script>
+
+</body>
+</html>
