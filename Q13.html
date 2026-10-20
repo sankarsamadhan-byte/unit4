@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration</title>
+</head>
+
+<body>
+
+<form>
+
+    <label>Enter Mobile Number</label><br>
+    <input type="text" id="mob">
+    <br><br>
+
+    <label>Student ID</label><br>
+    <input type="number" id="sid">
+    <br><br>
+
+    <label>Student Name</label><br>
+    <input type="text" id="name">
+    <br><br>
+
+    <label>City</label><br>
+    <input type="text" id="city">
+    <br><br>
+
+    <input type="submit"
+           value="OK"
+           onclick="event.preventDefault(); show();">
+
+</form>
+
+<div id="msg"></div>
+
+<script>
+
+function show()
+{
+    let mob = document.getElementById("mob").value;
+    let sid = document.getElementById("sid").value;
+    let sname = document.getElementById("name").value;
+    let city = document.getElementById("city").value;
+
+    let sam = new XMLHttpRequest();
+
+    sam.open(
+        "GET",
+        "testing.php?mob=" + mob +
+        "&sid=" + sid +
+        "&name=" + sname +
+        "&city=" + city,
+        true
+    );
+
+    sam.send();
+
+    sam.onreadystatechange = function()
+    {
+        if(this.readyState == 4 && this.status == 200)
+        {
+            document.getElementById("msg").innerHTML =
+                this.responseText;
+        }
+    }
+}
+
+</script>
+
+</body>
+</html>

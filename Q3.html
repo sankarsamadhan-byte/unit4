@@ -5,41 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-
 <body>
 
-<h2>Select Product</h2>
+<select onchnage="show(this.value)">
 
-<select onchange="show(this.value)">
-    <option value="">SELECT</option>
-    <option value="Laptop">Laptop</option>
-    <option value="Keyboard">Keyboard</option>
-    <option value="Mouse">Mouse</option>
-    <option value="Headphone">Headphone</option>
+<option value="">SLECT ONE</option>
+<option value="red">RED</option>
+<option value="blue">blue</option>
+<option value="pink">pink </option>
+
 </select>
-
-<div id="ans"></div>
-
+<div id="msg"></div>
 <script>
 
 function show(value)
 {
-    let sam = new XMLHttpRequest();
 
-    sam.open("GET", "Q11.php?name=" + value, true);
-
-    sam.send();
-
-    sam.onreadystatechange = function()
-    {
-        if(sam.readyState == 4 && sam.status == 200)
+        let sam =new XMLHttpRequest();
+        sam.open("GET","testing.php?name="+name,value);
+        sam.send();
+        sam.onreadystatechange=function()
         {
-            document.getElementById("ans").innerHTML = sam.responseText;
+            if(sam.readyState==4&&sam.status==200)
+        {
+            document.getElementById("msg").innerHTML=sam
         }
-    }
+        }
+
+
 }
 
 </script>
-
+    
 </body>
 </html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+    <label>Ente the STUNID</label>
+    <input type="text" id="sid" onkeyup="show()">
+</form>
+<div id="msg"></div>
+<script>
+
+function show()
+{
+
+    let name=document.getElementById("sid").value;
+
+    if(name==="")
+{
+    document.getElementById("msg").innerHTML="PLSer ENter  ID";
+    return;
+}
+let sam =new XMLHttpRequest();
+sam.open("GET","Q12.php?name="+name,true);
+sam.send();
+sam.onreadystatechange=function()
+//sam.onreadystatechange=function()
+{
+
+    if(this.readyState==4&&this.status==200)
+{
+    document.getElementById("msg").innerHTML=this.responseText;
+}
+
+}
+
+}
+
+
+
+</script>
+
+
+</body>
+</html>
