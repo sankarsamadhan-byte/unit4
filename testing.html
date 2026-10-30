@@ -1,38 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+
+<html>
 <body>
-    <form>
 
+<form onsubmit="event.preventDefault(); show();">
 
-<input Enetr  moub e
-<input id 
-<input name 
+```
+Enter Mobile Number:
+<input type="text" id="mon"><br><br>
 
+Enter ID:
+<input type="number" id="sid"><br><br>
 
+Enter Name:
+<input type="text" id="name"><br><br>
 
-    </form>
+Enter Country:
+<input type="text" id="city"><br><br>
+
+<input type="submit" value="OK">
+```
+
+</form>
+
+<div id="msg"></div>
+
 <script>
+function show() {
+    let mob = document.getElementById("mon").value;
+    let sid = document.getElementById("sid").value;
+    let name = document.getElementById("name").value;
+    let city = document.getElementById("city").value;
 
+    let sam = new XMLHttpRequest();
 
+    sam.open("GET", "testing.php?mob=" + mob +
+        "&sid=" + sid +
+        "&name=" + name +
+        "&city=" + city, true);
 
-funciton shw()
-{
-    let mob=docum.getElemntById("mo").value;
-    let sid=document.geEleetById("sid").value;
-    let sm,e=e
-    let sam =XMLHTTPSREQUEST();
-    sam.opne("GET","testing.php?mob="+mob+"&sid="+sid+"&name="+name,true);
+    sam.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("msg").innerHTML = this.responseText;
+        }
+    };
 
-sam.opne("GET","testing.php?mob="+mob+"&sid="+sid+"&sanem="+anme,true);
-
-
+    sam.send();
 }
+</script>
 
-</script>    
 </body>
 </html>

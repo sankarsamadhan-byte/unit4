@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <label >NAEM</label>
+        
+        <input type="text" name="s1" id="s1" onkeyup="wel()">
+
+
+    </form>
+    <div id="msg"></div>
+<Script>
+
+function wel()
+{
+
+var name=document.getElementsByID("s1").value;
+var sam =new XMLHttpRequest();
+
+sam.opne("GET","testing.php?name="+nmae,true);
+
+sam.send();
+sam.onreadystatechange=function()
+{
+    if(this.readyState==4&&this.status==200)
+{
+    document.getElementsByID("msg").innerHTML=this.responceText;
+}
+}
+}
+
+
+
+
+
+</Script>
+
+
+
+</body>
+</html>

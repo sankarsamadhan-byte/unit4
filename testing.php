@@ -1,38 +1,39 @@
-<?php
 
-$sam =new mysqi("localhost","roto"
-);
+  <?php
+
+$sam =new mysqli("localhost","root","","night");
+
 
 $mob=$_GET["mob"];
-sid=$_GET["sid"];
-$nmae=$_GET["nmae"];
+$sid=$_GET["sid"];
+$name=$_GET["name"];
+$city=$_GET["city"];
 
-$sel ="SELECT * FROM STN where MObl ='$mob'";
+$sel ="SELECT * FROM intex WHERE mob='$mon'";
 
-$asn= $sam ->query ($sel);
+$ans =$sam ->query ($sel);
 
-$row =mysqli_row_nums($asn);
-if($ro>0)
+$row=mysqli_num_rows($ans);
+
+if($row>0)
     {
-        echo moile alert  he  try anothe  mio  nuebr
-;    }
-
-else
-    {
-        echo "NO  EXISTS  oyu  hvae  to neter
-        "
-
-        if($sid!="&&$nmae!="")
-        {
-        $insert="INSERt INOT stun values($id',;$nma;,'$mon');
-
-        if($sam->query($insert)==true0
-        {
-        echo "DONE
-else
-    {
-    eoro
-
+        echo "moile  he   anothe  pleseee";
     }
+    else
+        {
+            $ins="INSERT INTO intex
+            VALUES ('$sid','$name','$mob','$city')";
+        }
 
-?>
+    if($sam->query($ins))
+        {
+            echo "yep  do   done ";
+        }
+        else
+            {
+                echo "ERRRI".$sam ->error;
+            }
+
+
+
+  ?>      
